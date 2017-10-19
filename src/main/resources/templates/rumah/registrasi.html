@@ -1,0 +1,49 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>
+        Registrasi Pembelian Token
+    </title>
+</head>
+<body>
+<div>
+    <div>Nomor KTP: <!--/*@thymesVar id="rumah" type="com.tabeldata.pln.model.RumahPelanggan"*/-->
+        <span th:text="${rumah.pelanggan.nomorKtp}">6345435</span></div>
+    <div>Nama Pelanggan: <span th:text="${rumah.pelanggan.nama}">Dimas Maryanto</span></div>
+</div>
+<div>
+    <!--/*@thymesVar id="rumah" type="com.tabeldata.pln.model.RumahPelanggan"*/-->
+    <form action="/pelanggan/rumah/registrasi" th:method="post" method="post" th:action="@{/pelanggan/rumah/registrasi}"
+          th:object="${rumah}">
+        <input type="hidden" name="pelanggan" th:field="*{pelanggan.id}"/>
+        <div>
+            <label for="alamat">Alamat Rumah</label>
+            <textarea name="alamat" id="alamat" cols="30" rows="10" th:field="*{alamat}"></textarea>
+        </div>
+        <div>
+            <label for="kecamatan">Kecamatan</label>
+            <input type="text" name="kecamatan" id="kecamatan" th:field="*{kecamatan}"/>
+        </div>
+        <div>
+            <label for="kelurahan">Kelurahan</label>
+            <input type="text" name="kelurahan" id="kelurahan" th:field="*{kelurahan}"/>
+        </div>
+        <div>
+            <label for="kotaKab">Kota/Kabupaten</label>
+            <input type="text" name="kotaKab" id="kotaKab" th:field="*{kotaKabupaten}"/>
+        </div>
+        <div>
+            <label for="rt">Rukun Tetangga</label>
+            <input type="number" name="rt" id="rt" th:field="*{rt}"/>
+        </div>
+        <div>
+            <label for="rw">Rukun Warga</label>
+            <input type="number" name="rw" id="rw" th:field="*{rw}"/>
+        </div>
+        <div>
+            <button type="submit">Kirim</button>
+            <button type="reset">Kembali</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

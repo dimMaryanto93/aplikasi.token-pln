@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Pelanggan Baru</title>
+</head>
+<body>
+<div>
+    <!--/*@thymesVar id="model" type="com.tabeldata.pln.model.Pelanggan"*/-->
+    <form action="/pelanggan/new" method="post" th:object="${model}" th:action="@{/pelanggan/new}" th:method="post">
+        <div>
+            <label for="namaPelanggan">Nama Pelanggan</label>
+            <input type="text" name="namaPelanggan" id="namaPelanggan" th:field="*{nama}"/>
+        </div>
+        <div>
+            <label for="nomorKtp">Nomor KTP</label>
+            <input type="text" name="nomorKtp" id="nomorKtp" th:field="*{nomorKtp}"/>
+        </div>
+        <div>
+            <button type="submit">Simpan</button>
+            <button type="reset">Reset</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

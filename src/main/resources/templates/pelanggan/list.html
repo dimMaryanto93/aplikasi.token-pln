@@ -1,0 +1,28 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Daftar Pelanggan</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <td>No</td>
+        <td>Nomor KTP</td>
+        <td>Nama Pelanggan</td>
+        <td>Resitrasi Rumah</td>
+        <td>Aksi</td>
+    </tr>
+    </thead>
+    <tbody>
+    <!--/*@thymesVar id="listPelanggan" type="com.tabeldata.pln.controller.PelangganController"*/-->
+    <tr th:each="p, iterStat : ${listPelanggan}">
+        <td th:text="${iterStat.count}">1</td>
+        <td th:text="${p.nomorKtp}"></td>
+        <td th:text="${p.nama}"></td>
+        <td><a href="/pelangan/rumah/new" th:href="@{'/pelanggan/rumah/'+ ${p.id}}">Registrasi Rumah</a></td>
+        <td>Edit | Delete</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
