@@ -7,6 +7,7 @@ import com.tabeldata.pln.repository.RumahPelangganRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +23,8 @@ public class PelangganController {
     private PelangganRepository pelangganRepository;
     @Autowired
     private RumahPelangganRepository rumahPelangganRepository;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @GetMapping({"/baru", "/new"})
     public String pelangganBaru(Model model, Pelanggan pelanggan) {
@@ -31,6 +34,8 @@ public class PelangganController {
 
     @PostMapping({"/new", "/baru"})
     public String submitPelanggan(@ModelAttribute Pelanggan pelanggan) {
+        pelanggan.setPassword(passwordEncoder.encode(pelanggan.getNomorKtp()));
+        pelanggan.setActive(false);
         this.pelangganRepository.save(pelanggan);
         return "redirect:/pelanggan/list";
     }

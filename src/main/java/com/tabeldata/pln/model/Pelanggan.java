@@ -1,32 +1,24 @@
 package com.tabeldata.pln.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.hibernate.annotations.GenericGenerator;
+import lombok.EqualsAndHashCode;
 import org.hibernate.validator.constraints.NotEmpty;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "m_pelanggan")
-public class Pelanggan {
-
-    @Id
-    @GenericGenerator(name = "gen_pelanggan", strategy = "uuid2")
-    @GeneratedValue(generator = "gen_pelanggan")
-    @Column(name = "id_pelanggan", length = 120)
-    private String id;
+@EqualsAndHashCode(callSuper = false)
+public class Pelanggan extends User {
 
     @NotNull
     @NotEmpty
     @Column(name = "nama_pelanggan")
     private String nama;
-
 
     @NotEmpty
     @NotNull

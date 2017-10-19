@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface PelangganRepository extends PagingAndSortingRepository<Pelanggan, String> {
     List<Pelanggan> findAll();
+
+    Pelanggan findByUsername(String username);
 }
