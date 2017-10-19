@@ -1,0 +1,26 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Tambah Product</title>
+</head>
+<body>
+<!--/*@thymesVar id="p" type="com.tabeldata.pln.model.Product"*/-->
+<form action="/product/new" method="post" th:object="${p}" th:action="@{/produk/new}" th:method="post">
+    <div>
+        <label for="kode">Kode Product</label>
+        <input type="text" name="kode" id="kode" th:field="*{id}"/>
+    </div>
+    <div>
+        <label for="nama">Nama Product</label>
+        <input type="text" name="nama" id="nama" th:field="*{namaProduct}"/>
+    </div>
+    <div>
+        <label for="harga">Harga</label>
+        <input type="number" name="harga" id="harga" th:field="*{harga}"/>
+    </div>
+    <div>
+        <button type="submit">Kirim</button>
+        <button type="reset">Kembali</button>
+    </div>
+</form>
+</body>
+</html>

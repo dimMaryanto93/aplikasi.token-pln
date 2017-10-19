@@ -1,0 +1,29 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Daftar Product</title>
+</head>
+
+<body>
+<table>
+    <thead>
+    <tr>
+        <td>No</td>
+        <td>Nama Product</td>
+        <td>Harga</td>
+        <td>Aksi</td>
+    </tr>
+    </thead>
+    <tbody>
+    <!--/*@thymesVar id="listProduct" type="com.tabeldata.pln.controller.ProductController"*/-->
+    <tr th:each=" p, iterStat : ${listProduct}">
+        <td th:text="${iterStat.count}"></td>
+        <td th:text="${p.namaProduct}"></td>
+        <td th:text="${p.harga}"></td>
+        <td>
+            <a href="/product/update/1" th:href="@{'/produk/'+${p.id}}">Update Harga</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
