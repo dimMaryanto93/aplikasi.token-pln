@@ -15,12 +15,15 @@
     </thead>
     <tbody>
     <!--/*@thymesVar id="listPelanggan" type="com.tabeldata.pln.controller.PelangganController"*/-->
-    <tr th:each="p, iterStat : ${listPelanggan}">
+    <tr th:each="value, iterStat : ${listPelanggan}">
         <td th:text="${iterStat.count}">1</td>
-        <td th:text="${p.nomorKtp}"></td>
-        <td th:text="${p.nama}"></td>
-        <td><a href="/pelangan/rumah/new" th:href="@{'/pelanggan/rumah/'+ ${p.id}}">Registrasi Rumah</a></td>
-        <td>Edit | Delete</td>
+        <td th:text="${value.nomorKtp}"></td>
+        <td th:text="${value.nama}"></td>
+        <td><a href="/pelangan/rumah/new" th:href="@{'/pelanggan/rumah/'+ ${value.id}}">Registrasi Rumah</a></td>
+        <td>
+            Delete |
+            <a href="/pelanggan/1" th:href="@{'/pelanggan/'+ ${value.id}}">Edit</a>
+        </td>
     </tr>
     </tbody>
 </table>

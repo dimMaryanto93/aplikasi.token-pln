@@ -1,0 +1,55 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Daftar Rumah Pelanggan</title>
+</head>
+
+<body>
+<div class="row">
+    <!--/*@thymesVar id="p" type="com.tabeldata.pln.model.Pelanggan"*/-->
+    <div>
+        Nama Pelanggan:
+        <input type="text" name="nama" id="nama" readonly="true" th:value="${p.nama}"/>
+    </div>
+    <div>
+        Username: <input type="text" name="nomorKtp" id="nomorKtp" readonly="true" th:value="${p.nomorKtp}"/>
+    </div>
+    <div>
+        Username: <input type="text" name="userId" id="userId" readonly="true" th:value="${p.username}"/>
+    </div>
+    <div>
+        Password: <input type="password" name="password" id="" readonly="true" th:value="${p.password}"/>
+    </div>
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <td>No</td>
+                <td>Alamat</td>
+                <td>Kota/Kabupaten</td>
+                <td>Kecamatan</td>
+                <td>Kelurahan</td>
+                <td>RT</td>
+                <td>RW</td>
+                <td>Saldo</td>
+                <td>Aksi</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each=" value, iterStat : ${p.daftarRumah}">
+                <td th:text="${iterStat.count}">1</td>
+                <td th:text="${value.alamat}">Jl.Bukit indah no b8</td>
+                <td th:text="${value.kotaKabupaten}">Kab.Bandung</td>
+                <td th:text="${value.kelurahan}">Cileunyi</td>
+                <td th:text="${value.kecamatan}">Cinunuk</td>
+                <td th:text="${value.rw}">18</td>
+                <td th:text="${value.rt}">06</td>
+                <td th:text="${#numbers.formatDecimal(value.saldoToken, 1 , 2,'COMMA')}">10000</td>
+                <td>Edit | Hapus</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

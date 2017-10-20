@@ -26,6 +26,12 @@ public class PelangganController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @GetMapping("/{id}")
+    public String pelangganById(@PathVariable(name = "id") Pelanggan pelanggan, Model model) {
+        model.addAttribute("p", pelanggan);
+        return "/rumah/daftar-rumah-pelanggan";
+    }
+
     @GetMapping({"/baru", "/new"})
     public String pelangganBaru(Model model, Pelanggan pelanggan) {
         model.addAttribute("model", pelanggan);
